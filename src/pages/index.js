@@ -19,10 +19,10 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
-  const handleAdd = () => {
+  const handlePlus = () => {
     dispatch(increment());
   };
-  const handleDelete = () => {
+  const handleMinus = () => {
     dispatch(decrement());
   };
   const ProductCard = ({ image, name, category, price }) => {
@@ -31,11 +31,11 @@ export default function Home() {
         <div className="productCard">
           <button className="addToCard">
             <img src="/images/icon-add-to-cart.svg" />
-            <button className="minusButton" onClick={handleDelete}>
+            <button className="minusButton" onClick={handleMinus}>
               <img src="/images/icon-decrement-quantity.svg" />
             </button>
             <label style={{ margin: "15px" }}>Add to cart</label>
-            <button className="plusButton" onClick={handleAdd}>
+            <button className="plusButton" onClick={handlePlus}>
               <img src="/images/icon-increment-quantity.svg" />
             </button>
           </button>
