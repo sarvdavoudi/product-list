@@ -30,17 +30,12 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      const newItemId = action.payload.id;
-      const existingItem = state.cartItems.find(
-        (item) => item.id === newItemId
-      );
+      // Add a new item to the cart with a unique identifier and quantity of 1
+      const newItem = { ...action.payload, id: Date.now(), quantity: 1 };
 
-      if (existingItem) {
-        existingItem.quantity++;
-      } else {
-        state.cartItems.push(action.payload);
-      }
+      state.cartItems.push(newItem);
     },
+
     removeItem(state, action) {
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload
@@ -54,6 +49,7 @@ export const cartSlice = createSlice({
         return item;
       });
     },
+
     decrementItem(state, action) {
       state.cartItems = state.cartItems
         .map((item) => {
@@ -62,7 +58,7 @@ export const cartSlice = createSlice({
           }
           return item;
         })
-        .filter((item) => item.quantity !== 0);
+        .filter((item) => item.quantity > 0); // Optionally, remove item if quantity reaches 0
     },
   },
 });

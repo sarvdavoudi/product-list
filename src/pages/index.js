@@ -29,7 +29,7 @@ export default function Home() {
     const cartItems = useSelector((state) => state.cartSlice.cartItems);
     const dispatch = useDispatch();
     const cartQuantity = cartItems.length;
-    // console.log(cartQuantity);
+    console.log(cartQuantity);
     const handleRemove = (itemId) => {
       dispatch(removeItem(itemId));
     };
@@ -55,9 +55,6 @@ export default function Home() {
               cartItems.map((item) => {
                 return (
                   <div className="cart-item" key={item.id}>
-                    <div className="cart-item-image">
-                      <img src={item.image} alt={item.name} />
-                    </div>
                     <div className="cart-item-info">
                       <h3>{item.name}</h3>
                       <p>{item.category}</p>
