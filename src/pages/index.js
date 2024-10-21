@@ -1,12 +1,17 @@
-import { decrement, increment } from "@/redux/slices/cartSlice";
+import {
+  addItem,
+  decrement,
+  decrementItem,
+  increment,
+  incrementItem,
+  removeItem,
+} from "@/redux/slices/cartSlice";
 import { customizedAxios } from "@/services/axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const cartSlice = useSelector((state) => state.cartSlice.value);
-  const dispatch = useDispatch();
   const fetchData = async () => {
     try {
       const response = await customizedAxios.get("/products");
@@ -19,13 +24,86 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
-  const handlePlus = () => {
-    dispatch(increment());
+
+  const Cart = () => {
+    const cartItems = useSelector((state) => state.cartSlice.cartItems);
+    const dispatch = useDispatch();
+    const cartQuantity = cartItems.length;
+    // console.log(cartQuantity);
+    const handleRemove = (itemId) => {
+      dispatch(removeItem(itemId));
+    };
+
+    const handleIncrement = (itemId) => {
+      dispatch(incrementItem(itemId));
+    };
+
+    const handleDecrement = (itemId) => {
+      dispatch(decrementItem(itemId));
+    };
+    return (
+      <>
+        <div className="cart">
+          <h2 style={{ color: "var(--Red)" }}>Your Cart{cartQuantity}</h2>
+          <div className="cart-body">
+            {cartQuantity === 0 ? (
+              <div className="empty-file ">
+                <img src="/images/illustration-empty-cart.svg" />
+                <p>Your added items will appear here</p>
+              </div>
+            ) : (
+              cartItems.map((item) => {
+                return (
+                  <div className="cart-item" key={item.id}>
+                    <div className="cart-item-image">
+                      <img src={item.image} alt={item.name} />
+                    </div>
+                    <div className="cart-item-info">
+                      <h3>{item.name}</h3>
+                      <p>{item.category}</p>
+                      <div className="cart-item-price">
+                        <p>${item.price}</p>
+                        <div className="cart-item-quantity">
+                          <button onClick={() => handleDecrement(item.id)}>
+                            −
+                          </button>
+                          <span>{item.quantity}</span>{" "}
+                          <button onClick={() => handleIncrement(item.id)}>
+                            +
+                          </button>{" "}
+                        </div>
+                        <div
+                          title="Remove Item"
+                          className="cart_items_delete"
+                          onClick={() => handleRemove(item.id)}
+                        >
+                          <span>&times;</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </>
+    );
   };
-  const handleMinus = () => {
-    dispatch(decrement());
-  };
-  const ProductCard = ({ image, name, category, price }) => {
+
+  // ****************************************************
+  const ProductCard = (props) => {
+    const { image, name, category, price } = props;
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+      const item = { ...props };
+      dispatch(addItem(item));
+      // dispatch(increment());
+    };
+    const handleMinus = () => {
+      // dispatch(decrement());
+    };
     return (
       <>
         <div className="productCard">
@@ -35,7 +113,7 @@ export default function Home() {
               <img src="/images/icon-decrement-quantity.svg" />
             </button>
             <label style={{ margin: "15px" }}>Add to cart</label>
-            <button className="plusButton" onClick={handlePlus}>
+            <button className="plusButton" onClick={handleAddToCart}>
               <img src="/images/icon-increment-quantity.svg" />
             </button>
           </button>
@@ -67,11 +145,7 @@ export default function Home() {
               />
             ))}
           </div>
-          <div className="cartInfo">
-            <h2 style={{ color: "var(--Red)" }}>Your Cart{cartSlice}</h2>
-            <img src="/images/illustration-empty-cart.svg" />
-            <p>Your added items will appear here</p>
-          </div>
+          <Cart />
         </div>
       </div>
     </>
