@@ -9,11 +9,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
-      // Add a new item to the cart with a unique identifier and quantity of 1
-      const newItem = { ...action.payload, id: Date.now(), quantity: 1 };
+      const newItemId = action.payload.id;
+      const existingItem = state.cartItems.find(
+          (item) => item.id === newItemId
+      );
 
-      state.cartItems.push(newItem);
-    },
+      if (existingItem) {
+          existingItem.quantity++;
+      } else {
+          state.cartItems.push(action.payload);
+      }
+  },
 
     removeItem(state, action) {
       state.cartItems = state.cartItems.filter(
