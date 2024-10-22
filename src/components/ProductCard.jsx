@@ -1,13 +1,16 @@
 import { addItem, decrementItem } from "@/redux/slices/cartSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const ProductCard = ({ image, name, category, price, id, quantity }) => {
   const [isAdded, setIsAdded] = useState(false);
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
-  const cartItem = cartItems.find((existItems) => existItems.id === id);
-  const itemQuantity = cartItem ? cartItem.quantity : "Add to cart";
+  const isExistCard = cartItems.find((existItems) => existItems.id === id);
+  const cardQuantity = isExistCard ? isExistCard.quantity : "add to cart";
   const dispatch = useDispatch();
-
+  // Use useEffect to set isAdded based on isExistCard
+  useEffect(() => {
+    setIsAdded(!!isExistCard); // that converts the value of isExistCard into a boolean:   //If isExistCard is truthy (i.e., it exists), !!isExistCard evaluates to true.
+  }, [isExistCard]);
   const handleAddToCart = () => {
     dispatch(addItem({ name, category, price, id, quantity }));
     setIsAdded(true);
@@ -18,18 +21,33 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
   return (
     <>
       <div className="productCard">
-        <button className="addToCard">
-          <img src="/images/icon-add-to-cart.svg" />
-          <button className="minusButton" onClick={handleDecrement}>
-            <img src="/images/icon-decrement-quantity.svg" />
+        {isAdded ? (
+          <div className="addToCard" style={{ backgroundColor: "var(--Red)" }}>
+            <button className="minusButton" onClick={handleDecrement}>
+              <img
+                src="/images/icon-decrement-quantity.svg"
+                alt="Decrease quantity"
+              />
+            </button>
+            <label style={{ margin: "15px" }}>{cardQuantity}</label>
+            <button className="plusButton" onClick={handleAddToCart}>
+              <img
+                src="/images/icon-increment-quantity.svg"
+                alt="Increase quantity"
+              />
+            </button>
+          </div>
+        ) : (
+          <button
+            className="addToCard"
+            onClick={handleAddToCart}
+            style={{ backgroundColor: "var(--Rose50)" }}
+          >
+            <img src="/images/icon-add-to-cart.svg" alt="Add to Cart" />
+            <label style={{ margin: "15px" }}>Add to cart</label>
           </button>
-          <label style={{ margin: "15px" }}>
-            {isAdded ? itemQuantity : "Add to cart"}
-          </label>
-          <button className="plusButton" onClick={handleAddToCart}>
-            <img src="/images/icon-increment-quantity.svg" />
-          </button>
-        </button>
+        )}
+
         <img src={image} />
         <div className="detail">
           <div style={{ color: "gray" }}>{category}</div>

@@ -66,25 +66,48 @@ h2 {
   border-radius: 1rem;
   transition: background-color 0.3s ease-in-out;
 }
-.addToCard:hover {
+/* .addToCard:hover {
   background-color: var(--Red);
-}
+} */
 .addToCard > button {
   border: 1px solid white;
   border-radius: 50%;
-  /* padding: 3px; */
   background-color: transparent;
   cursor: pointer;
 }
-.plusButton,
-.minusButton {
-  display: none;
+
+.cart-item-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid red;
 }
 
-.addToCard:hover .plusButton,
-.addToCard:hover .minusButton {
-  display: inline-block;
+.btn-delete{
+  background: none;
+  border-radius: 50%;
+  padding: 5px;
+  border: 1px solid gray;
 }
+
+.cart-item-quantity>button{
+  border: none;
+  background-color: var(--Red);
+  color: var(--Rose50);
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin: 5px;
+}
+.confirmOrder{
+background-color: var(--Red);
+border: none;
+color: var(--Rose50);
+padding: 1rem 3rem;
+border-radius: 1.5rem;
+margin: 1rem 0;
+}
+
 @media (max-width: 375px) {
   .container {
     flex-direction: column;

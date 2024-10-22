@@ -9,7 +9,10 @@ const Cart = () => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const dispatch = useDispatch();
   const cartQuantity = cartItems.length;
-  console.log(cartQuantity);
+  const cartTotal = cartItems
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
+
   const handleRemove = (itemId) => {
     dispatch(removeItem(itemId));
   };
@@ -24,11 +27,11 @@ const Cart = () => {
   return (
     <>
       <div className="cart">
-        <h2 style={{ color: "var(--Red)" }}>Your Cart{cartQuantity}</h2>
+        <h2 style={{ color: "var(--Red)" }}>Your Cart({cartQuantity})</h2>
         <div className="cart-body">
           {cartQuantity === 0 ? (
             <div className="empty-file ">
-              <img src="/images/illustration-empty-cart.svg" />
+              <img src="/images/illustration-empty-cart.svg" alt="Empty Cart" />
               <p>Your added items will appear here</p>
             </div>
           ) : (
@@ -37,7 +40,6 @@ const Cart = () => {
                 <div className="cart-item" key={item.id}>
                   <div className="cart-item-info">
                     <h3>{item.name}</h3>
-                    <p>{item.category}</p>
                     <div className="cart-item-price">
                       <p>${item.price}</p>
                       <div className="cart-item-quantity">
@@ -47,14 +49,16 @@ const Cart = () => {
                         <span>{item.quantity}</span>
                         <button onClick={() => handleIncrement(item.id)}>
                           +
-                        </button>{" "}
+                        </button>
                       </div>
                       <div
                         title="Remove Item"
                         className="cart_items_delete"
                         onClick={() => handleRemove(item.id)}
                       >
-                        <span>&times;</span>
+                        <button className="btn-delete">
+                          <span>&times;</span>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -63,6 +67,17 @@ const Cart = () => {
             })
           )}
         </div>
+        {cartQuantity > 0 && (
+          <>
+            <h3>
+              <small>Total:</small>
+              <b> ${cartTotal.toLocaleString()}</b>
+            </h3>
+            <button className="confirmOrder" style={{ textAlign: "center" }}>
+              Confirm Order
+            </button>
+          </>
+        )}
       </div>
     </>
   );
