@@ -1,16 +1,19 @@
 import { addItem, decrementItem } from "@/redux/slices/cartSlice";
-import { useDispatch } from "react-redux";
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 const ProductCard = ({ image, name, category, price, id, quantity }) => {
+  const [isAdded, setIsAdded] = useState(false);
+  const cartItems = useSelector((state) => state.cartSlice.cartItems);
+  const cartItem = cartItems.find((existItems) => existItems.id === id);
+  const itemQuantity = cartItem ? cartItem.quantity : "Add to cart";
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    const item = { name, category, price, id, quantity };
-    dispatch(addItem(item));
+    dispatch(addItem({ name, category, price, id, quantity }));
+    setIsAdded(true);
   };
   const handleDecrement = () => {
-    const item = { name, category, price, id, quantity };
-    dispatch(decrementItem(item));
+    dispatch(decrementItem(id));
   };
   return (
     <>
@@ -20,7 +23,9 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
           <button className="minusButton" onClick={handleDecrement}>
             <img src="/images/icon-decrement-quantity.svg" />
           </button>
-          <label style={{ margin: "15px" }}>Add to cart</label>
+          <label style={{ margin: "15px" }}>
+            {isAdded ? itemQuantity : "Add to cart"}
+          </label>
           <button className="plusButton" onClick={handleAddToCart}>
             <img src="/images/icon-increment-quantity.svg" />
           </button>

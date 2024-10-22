@@ -27,11 +27,11 @@ export default function Home() {
             {data.map((item) => (
               <ProductCard
                 key={item.id}
+                id={item.id}
                 image={item.image.desktop}
                 name={item.name}
                 category={item.category}
                 price={item.price}
-                id={item.id}
                 quantity={item.quantity}
               />
             ))}
