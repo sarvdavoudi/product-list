@@ -4,7 +4,15 @@ export const Modal = ({ closeModal }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal">
+      <div
+        className="modal"
+        style={{
+          border: "1px solid blue",
+          display: "flex",
+          flexDirection: "column",
+          gap: "2rem",
+        }}
+      >
         <h2>Order Confirmed</h2>
         <p>we hope you enjoy your food!</p>
         {cartItems.map((item) => {
@@ -12,7 +20,11 @@ export const Modal = ({ closeModal }) => {
             <div
               className="cart-item"
               key={item.id}
-              style={{ display: "flex" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                border: "1px solid red",
+              }}
             >
               <img src={item.image} style={{ width: "4rem" }} />
               <h3>{item.name}</h3>
