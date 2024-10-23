@@ -12,7 +12,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
     setIsAdded(!!isExistCard); // that converts the value of isExistCard into a boolean:   //If isExistCard is truthy (i.e., it exists), !!isExistCard evaluates to true.
   }, [isExistCard]);
   const handleAddToCart = () => {
-    dispatch(addItem({ name, category, price, id, quantity }));
+    dispatch(addItem({ name, category, price, id, quantity,image }));
     setIsAdded(true);
   };
   const handleDecrement = () => {

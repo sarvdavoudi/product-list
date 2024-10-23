@@ -3,10 +3,9 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const Cart = ({handleClick}) => {
+const Cart = ({ handleConfirmBtnFunc }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const dispatch = useDispatch();
   const cartQuantity = cartItems.length;
@@ -73,7 +72,7 @@ const Cart = ({handleClick}) => {
             <button
               className="confirmOrder"
               style={{ textAlign: "center" }}
-              onClick={handleClick}
+              onClick={handleConfirmBtnFunc}
             >
               Confirm Order
             </button>

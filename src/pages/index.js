@@ -1,11 +1,12 @@
 import Card from "@/components/Cart";
+import { Modal } from "@/components/Modal";
 import ProductCard from "@/components/ProductCard";
 import { customizedAxios } from "@/services/axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
+  const [isConfirmBtnClicked, setIsConfirmBtnClicked] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -20,11 +21,11 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const handleClick = () => {
-    setIsClicked(true);
+  const handleConfirmBtnFuncInParent = () => {
+    setIsConfirmBtnClicked(true);
   };
   const closeModal = () => {
-    setIsClicked(false);
+    setIsConfirmBtnClicked(false);
   };
   return (
     <>
@@ -46,17 +47,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <Card isClicked={isClicked} handleClick={handleClick} />
+          <Card handleConfirmBtnFunc={handleConfirmBtnFuncInParent} />
         </div>
       </div>
-      {isClicked && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h2>Order Confirmed</h2>
-            <p>Your order has been placed successfully!</p>
-            <button onClick={closeModal}>Close</button>
-          </div>
-        </div>
+      {isConfirmBtnClicked && (
+        <Modal closeModal={closeModal}/>
       )}
     </>
   );
