@@ -3,9 +3,10 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const Cart = () => {
+const Cart = ({handleClick}) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const dispatch = useDispatch();
   const cartQuantity = cartItems.length;
@@ -24,6 +25,7 @@ const Cart = () => {
   const handleDecrement = (itemId) => {
     dispatch(decrementItem(itemId));
   };
+
   return (
     <>
       <div className="cart">
@@ -38,29 +40,24 @@ const Cart = () => {
             cartItems.map((item) => {
               return (
                 <div className="cart-item" key={item.id}>
-                  <div className="cart-item-info">
-                    <h3>{item.name}</h3>
-                    <div className="cart-item-price">
-                      <p>${item.price}</p>
-                      <div className="cart-item-quantity">
-                        <button onClick={() => handleDecrement(item.id)}>
-                          −
-                        </button>
-                        <span>{item.quantity}</span>
-                        <button onClick={() => handleIncrement(item.id)}>
-                          +
-                        </button>
-                      </div>
-                      <div
-                        title="Remove Item"
-                        className="cart_items_delete"
-                        onClick={() => handleRemove(item.id)}
-                      >
-                        <button className="btn-delete">
-                          <span>&times;</span>
-                        </button>
-                      </div>
+                  <h3>{item.name}</h3>
+                  <div className="cart-item-price">
+                    <p>${item.price}</p>
+                    <div className="cart-item-quantity">
+                      <button onClick={() => handleDecrement(item.id)}>
+                        −
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button onClick={() => handleIncrement(item.id)}>
+                        +
+                      </button>
                     </div>
+                    <button
+                      className="btn-delete"
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      <span>&times;</span>
+                    </button>
                   </div>
                 </div>
               );
@@ -70,10 +67,14 @@ const Cart = () => {
         {cartQuantity > 0 && (
           <>
             <h3>
-              <small>Total:</small>
-              <b> ${cartTotal.toLocaleString()}</b>
+              <label>Order Total:</label>
+              <label> ${cartTotal.toLocaleString()}</label>
             </h3>
-            <button className="confirmOrder" style={{ textAlign: "center" }}>
+            <button
+              className="confirmOrder"
+              style={{ textAlign: "center" }}
+              onClick={handleClick}
+            >
               Confirm Order
             </button>
           </>

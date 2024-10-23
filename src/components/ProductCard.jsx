@@ -17,16 +17,35 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
   };
   const handleDecrement = () => {
     dispatch(decrementItem(id));
+    if(!!cardQuantity){
+      setIsAdded(false)
+
+    }
+
   };
   return (
     <>
       <div className="productCard">
+        <img src={image} />
+        <div className="detail">
+          <div style={{ color: "gray" }}>{category}</div>
+          <div style={{ fontWeight: "700" }}>{name}</div>
+          <div style={{ color: "var(--Red)", fontWeight: "700" }}>${price}</div>
+        </div>
         {isAdded ? (
-          <div className="addToCard" style={{ backgroundColor: "var(--Red)" }}>
+          <div
+            className="addToCard"
+            style={{
+              backgroundColor: "var(--Red)",
+              color: "white",
+              border: "none",
+            }}
+          >
             <button className="minusButton" onClick={handleDecrement}>
               <img
                 src="/images/icon-decrement-quantity.svg"
                 alt="Decrease quantity"
+                style={{ width: "15px", height: "10px", padding: "3px" }}
               />
             </button>
             <label style={{ margin: "15px" }}>{cardQuantity}</label>
@@ -34,6 +53,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               <img
                 src="/images/icon-increment-quantity.svg"
                 alt="Increase quantity"
+                style={{ width: "15px", height: "10px", padding: "1px" }}
               />
             </button>
           </div>
@@ -47,13 +67,6 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             <label style={{ margin: "15px" }}>Add to cart</label>
           </button>
         )}
-
-        <img src={image} />
-        <div className="detail">
-          <div style={{ color: "gray" }}>{category}</div>
-          <div style={{ fontWeight: "700" }}>{name}</div>
-          <div style={{ color: "var(--Red)", fontWeight: "700" }}>${price}</div>
-        </div>
       </div>
     </>
   );

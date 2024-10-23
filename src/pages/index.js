@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [data, setData] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
+
   const fetchData = async () => {
     try {
       const response = await customizedAxios.get("/products");
@@ -18,27 +20,44 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const handleClick = () => {
+    setIsClicked(true);
+  };
+  const closeModal = () => {
+    setIsClicked(false);
+  };
   return (
     <>
       <div className="main" role="main">
-        <h2>Desserts</h2>
         <div className="container">
-          <div className="product-container">
-            {data.map((item) => (
-              <ProductCard
-                key={item.id}
-                id={item.id}
-                image={item.image.desktop}
-                name={item.name}
-                category={item.category}
-                price={item.price}
-                quantity={item.quantity}
-              />
-            ))}
+          <div>
+            <h2 style={{ marginBottom: "10px" }}>Desserts</h2>
+            <div className="product-container">
+              {data.map((item) => (
+                <ProductCard
+                  key={item.id}
+                  id={item.id}
+                  image={item.image.desktop}
+                  name={item.name}
+                  category={item.category}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              ))}
+            </div>
           </div>
-          <Card />
+          <Card isClicked={isClicked} handleClick={handleClick} />
         </div>
       </div>
+      {isClicked && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Order Confirmed</h2>
+            <p>Your order has been placed successfully!</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
