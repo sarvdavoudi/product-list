@@ -51,33 +51,35 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                         +
                       </button>
                     </div>
-                    <button
-                      className="btn-delete"
-                      onClick={() => handleRemove(item.id)}
-                    >
-                      <span>&times;</span>
-                    </button>
+                    <div style={{ textAlign: "right" }}>
+                      <button
+                        className="btn-delete"
+                        onClick={() => handleRemove(item.id)}
+                      >
+                        <span>&times;</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
             })
           )}
+          {cartQuantity > 0 && (
+            <>
+              <div style={{ display: "flex" }}>
+                <label style={{ flex: 1 }}>Order Total:</label>
+                <h3> ${cartTotal.toLocaleString()}</h3>
+              </div>
+              <button
+                className="confirmOrder"
+                style={{ textAlign: "center" }}
+                onClick={handleConfirmBtnFunc}
+              >
+                Confirm Order
+              </button>
+            </>
+          )}
         </div>
-        {cartQuantity > 0 && (
-          <>
-            <h3>
-              <label>Order Total:</label>
-              <label> ${cartTotal.toLocaleString()}</label>
-            </h3>
-            <button
-              className="confirmOrder"
-              style={{ textAlign: "center" }}
-              onClick={handleConfirmBtnFunc}
-            >
-              Confirm Order
-            </button>
-          </>
-        )}
       </div>
     </>
   );
