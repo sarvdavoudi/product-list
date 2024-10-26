@@ -130,10 +130,17 @@ body {
 
 .modal {
   background: white;
-  padding: 20px;
+  padding: 50px;
   border-radius: 10px;
-  width: 80%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 500px;
+}
+.modal > button {
+  border: none;
+  background-color: var(--Red);
+  color: white;
+  padding: 1rem;
+  border-radius: 1.5rem;
 }
 
 @media (max-width: 375px) {

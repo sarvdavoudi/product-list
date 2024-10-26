@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 export const Modal = ({ closeModal }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
-
+  const cartTotal = cartItems
+    .map((item) => item.price * item.quantity)
+    .reduce((prevValue, currValue) => prevValue + currValue, 0);
   return (
     <div className="modal-overlay">
       <div
         className="modal"
         style={{
-          border: "1px solid blue",
           display: "flex",
           flexDirection: "column",
-          gap: "2rem",
+          gap: "1rem",
         }}
       >
         <h2>Order Confirmed</h2>
@@ -23,18 +24,29 @@ export const Modal = ({ closeModal }) => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                border: "1px solid red",
+                justifyContent: "space-between",
+                
               }}
             >
-              <img src={item.image} style={{ width: "4rem" }} />
-              <h3>{item.name}</h3>
-              <div>*{item.quantity}</div>
+              <img
+                src={item.image}
+                style={{ width: "4rem", marginRight: "10px" }}
+              />
+              <div style={{ flex: 1 }}>
+                <h5> {item.name}</h5>
+                <div style={{color:'var(--Red)',fontWeight:'800'}}>*{item.quantity}</div>
+              </div>
+
               <div className="cart-item-price">
-                <p>${item.price}</p>
+                <p style={{fontWeight:'800',alignSelf:'flex-end'}}>${item.price}</p>
               </div>
             </div>
           );
         })}
+        <div style={{display:'flex',}}>
+          <label style={{flex:1}}>Order Total:</label>
+          <label style={{fontWeight:'800'}}> ${cartTotal.toLocaleString()}</label>
+        </div>
         <button onClick={closeModal}>start new order</button>
       </div>
     </div>
