@@ -85,7 +85,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 1rem;
-  
 }
 .cart-item-quantity {
   display: flex;

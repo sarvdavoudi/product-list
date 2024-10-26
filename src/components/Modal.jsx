@@ -19,16 +19,8 @@ export const Modal = ({ closeModal }) => {
           <p>we hope you enjoy your food!</p>
           {cartItems.map((item) => {
             return (
-              <div
-                className="modal-item"
-                key={item.id}
-                style={{
-                }}
-              >
-                <img
-                  src={item.image}
-                  style={{ width: "4rem" }}
-                />
+              <div className="modal-item" key={item.id} style={{}}>
+                <img src={item.image} style={{ width: "4rem" }} />
                 <div style={{ flex: 1 }}>
                   <h5> {item.name}</h5>
                   <div style={{ color: "var(--Red)", fontWeight: "800" }}>
