@@ -77,11 +77,12 @@ body {
   flex-direction: column;
   gap: 1rem;
   margin: 1.5rem 0;
+  max-width: 400px;
 }
 
 .cart-item-price {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 1rem;
 }
@@ -91,10 +92,10 @@ body {
   align-items: center;
 }
 .btn-delete {
-  width: 2rem;
+  width: 1rem;
+  height: 1rem;
   background: none;
   border-radius: 50%;
-  padding: 6px;
   border: 1px solid gray;
 }
 
@@ -132,7 +133,7 @@ body {
   background: white;
   padding: 50px;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
 }
 .modal > button {
@@ -141,6 +142,7 @@ body {
   color: white;
   padding: 1rem;
   border-radius: 1.5rem;
+  cursor: pointer;
 }
 
 @media (max-width: 375px) {

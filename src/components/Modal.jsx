@@ -25,7 +25,6 @@ export const Modal = ({ closeModal }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                
               }}
             >
               <img
@@ -34,18 +33,22 @@ export const Modal = ({ closeModal }) => {
               />
               <div style={{ flex: 1 }}>
                 <h5> {item.name}</h5>
-                <div style={{color:'var(--Red)',fontWeight:'800'}}>*{item.quantity}</div>
+                <div style={{ color: "var(--Red)", fontWeight: "800" }}>
+                  *{item.quantity}
+                </div>
               </div>
 
               <div className="cart-item-price">
-                <p style={{fontWeight:'800',alignSelf:'flex-end'}}>${item.price}</p>
+                <p style={{ fontWeight: "800", textAlign: "right" }}>
+                  ${item.price}
+                </p>
               </div>
             </div>
           );
         })}
-        <div style={{display:'flex',}}>
-          <label style={{flex:1}}>Order Total:</label>
-          <label style={{fontWeight:'800'}}> ${cartTotal.toLocaleString()}</label>
+        <div style={{ display: "flex" }}>
+          <label style={{ flex: 1 }}>Order Total:</label>
+          <h3> ${cartTotal.toLocaleString()}</h3>
         </div>
         <button onClick={closeModal}>start new order</button>
       </div>
