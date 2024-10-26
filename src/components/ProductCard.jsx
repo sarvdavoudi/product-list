@@ -3,6 +3,7 @@ import {
   decrementItem,
   incrementItem,
 } from "@/redux/slices/cartSlice";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const ProductCard = ({ image, name, category, price, id, quantity }) => {
@@ -30,7 +31,8 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
   return (
     <>
       <div className="productCard">
-        <img src={image} />
+        <Image src={image} width={250} height={250} style={{borderRadius:'10px'}} />
+
         <div className="detail">
           <div style={{ color: "gray" }}>{category}</div>
           <div style={{ fontWeight: "700" }}>{name}</div>
@@ -46,18 +48,22 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             }}
           >
             <button className="minusButton" onClick={handleDecrement}>
-              <img
+              <Image
+                width={15}
+                height={10}
                 src="/images/icon-decrement-quantity.svg"
                 alt="Decrease quantity"
-                style={{ width: "15px", height: "10px", padding: "3px" }}
+                style={{ padding: "3px" }}
               />
             </button>
             <label style={{ margin: "15px" }}>{cardQuantity}</label>
             <button className="plusButton" onClick={handleIncrement}>
-              <img
+              <Image
+                width={15}
+                height={10}
                 src="/images/icon-increment-quantity.svg"
                 alt="Increase quantity"
-                style={{ width: "15px", height: "10px", padding: "1px" }}
+                style={{ padding: "1px" }}
               />
             </button>
           </div>
@@ -67,7 +73,12 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             onClick={handleAddToCart}
             style={{ backgroundColor: "var(--Rose50)" }}
           >
-            <img src="/images/icon-add-to-cart.svg" alt="Add to Cart" />
+            <Image
+              width={20}
+              height={20}
+              src="/images/icon-add-to-cart.svg"
+              alt="Add to Cart"
+            />
             <label style={{ margin: "15px" }}>Add to cart</label>
           </button>
         )}

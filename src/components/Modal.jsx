@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useSelector } from "react-redux";
 export const Modal = ({ closeModal }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
@@ -20,7 +21,8 @@ export const Modal = ({ closeModal }) => {
           {cartItems.map((item) => {
             return (
               <div className="modal-item" key={item.id}>
-                <img src={item.image} style={{ width: "4rem" }} />
+              
+                <Image src={item.image} width={50} height={50} />
                 <div style={{ flex: 1 }}>
                   <h5> {item.name}</h5>
                   <div style={{ color: "var(--Red)", fontWeight: "800" }}>

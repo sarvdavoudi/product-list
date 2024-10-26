@@ -3,6 +3,7 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
 const Cart = ({ handleConfirmBtnFunc }) => {
@@ -32,7 +33,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
         <div className="cart-body">
           {cartQuantity === 0 ? (
             <div className="empty-file ">
-              <img src="/images/illustration-empty-cart.svg" alt="Empty Cart" />
+              <Image src="/images/illustration-empty-cart.svg" alt="Empty Cart" width={200} height={200}/>
               <p>Your added items will appear here</p>
             </div>
           ) : (
