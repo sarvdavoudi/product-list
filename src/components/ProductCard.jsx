@@ -31,7 +31,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
   return (
     <>
       <div className="productCard">
-        <Image src={image} width={250} height={250} style={{borderRadius:'10px'}} />
+        <Image  src={image} width={250} height={250} style={{borderRadius:'10px'}} alt="desc"/>
 
         <div className="detail">
           <div style={{ color: "gray" }}>{category}</div>

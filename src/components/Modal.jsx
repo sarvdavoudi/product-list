@@ -22,7 +22,7 @@ export const Modal = ({ closeModal }) => {
             return (
               <div className="modal-item" key={item.id}>
               
-                <Image src={item.image} width={50} height={50} />
+                <Image src={item.image} width={50} height={50} alt="desc"/>
                 <div style={{ flex: 1 }}>
                   <h5> {item.name}</h5>
                   <div style={{ color: "var(--Red)", fontWeight: "800" }}>
