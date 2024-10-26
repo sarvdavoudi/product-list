@@ -50,9 +50,7 @@ export default function Home() {
           <Card handleConfirmBtnFunc={handleConfirmBtnFuncInParent} />
         </div>
       </div>
-      {isConfirmBtnClicked && (
-        <Modal closeModal={closeModal}/>
-      )}
+      {isConfirmBtnClicked && <Modal closeModal={closeModal} />}
     </>
   );
 }

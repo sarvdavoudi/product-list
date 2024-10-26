@@ -1,27 +1,31 @@
-import { addItem, decrementItem } from "@/redux/slices/cartSlice";
+import {
+  addItem,
+  decrementItem,
+  incrementItem,
+} from "@/redux/slices/cartSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 const ProductCard = ({ image, name, category, price, id, quantity }) => {
   const [isAdded, setIsAdded] = useState(false);
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
-  const isExistCard = cartItems.find((existItems) => existItems.id === id);
-  const cardQuantity = isExistCard ? isExistCard.quantity : "add to cart";
+  const cardAddedToRedux = cartItems.find((existItems) => existItems.id === id);
+  const cardQuantity = cardAddedToRedux
+    ? cardAddedToRedux.quantity
+    : "add to cart";
   const dispatch = useDispatch();
-  // Use useEffect to set isAdded based on isExistCard
+  // Use useEffect to set isAdded based on cardAddedToRedux
   useEffect(() => {
-    setIsAdded(!!isExistCard); // that converts the value of isExistCard into a boolean:   //If isExistCard is truthy (i.e., it exists), !!isExistCard evaluates to true.
-  }, [isExistCard]);
+    setIsAdded(!!cardAddedToRedux); // that converts the value of cardAddedToRedux into a boolean:   //If cardAddedToRedux is truthy (i.e., it exists), !!cardAddedToRedux evaluates to true.
+  }, [cardAddedToRedux]);
   const handleAddToCart = () => {
-    dispatch(addItem({ name, category, price, id, quantity,image }));
+    dispatch(addItem({ name, category, price, id, quantity, image }));
     setIsAdded(true);
+  };
+  const handleIncrement = () => {
+    dispatch(incrementItem(id));
   };
   const handleDecrement = () => {
     dispatch(decrementItem(id));
-    if(!!cardQuantity){
-      setIsAdded(false)
-
-    }
-
   };
   return (
     <>
@@ -49,7 +53,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               />
             </button>
             <label style={{ margin: "15px" }}>{cardQuantity}</label>
-            <button className="plusButton" onClick={handleAddToCart}>
+            <button className="plusButton" onClick={handleIncrement}>
               <img
                 src="/images/icon-increment-quantity.svg"
                 alt="Increase quantity"

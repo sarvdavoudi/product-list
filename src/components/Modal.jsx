@@ -19,7 +19,7 @@ export const Modal = ({ closeModal }) => {
           <p>we hope you enjoy your food!</p>
           {cartItems.map((item) => {
             return (
-              <div className="modal-item" key={item.id} style={{}}>
+              <div className="modal-item" key={item.id}>
                 <img src={item.image} style={{ width: "4rem" }} />
                 <div style={{ flex: 1 }}>
                   <h5> {item.name}</h5>
@@ -27,7 +27,6 @@ export const Modal = ({ closeModal }) => {
                     *{item.quantity}
                   </div>
                 </div>
-
                 <div className="modal-item-price">
                   <p style={{ fontWeight: "800", textAlign: "right" }}>
                     ${item.price}
