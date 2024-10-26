@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 export const Modal = ({ closeModal }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const cartTotal = cartItems

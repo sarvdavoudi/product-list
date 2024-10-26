@@ -43,9 +43,12 @@ const cartSlice = createSlice({
         })
         .filter((item) => item.quantity > 0); // Optionally, remove item if quantity reaches 0
     },
+    clearCartItems(state) {
+      state.cartItems = [];
+    },
   },
 });
 
-export const { addItem, removeItem, incrementItem, decrementItem } =
+export const { addItem, removeItem, incrementItem, decrementItem,clearCartItems } =
   cartSlice.actions;
 export default cartSlice.reducer;

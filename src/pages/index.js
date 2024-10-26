@@ -1,13 +1,16 @@
 import Card from "@/components/Cart";
 import { Modal } from "@/components/Modal";
 import ProductCard from "@/components/ProductCard";
+import {
+  clearCartItems
+} from "@/redux/slices/cartSlice";
 import { customizedAxios } from "@/services/axios";
 import { useEffect, useState } from "react";
-
+import { useDispatch } from 'react-redux';
 export default function Home() {
   const [data, setData] = useState([]);
   const [isConfirmBtnClicked, setIsConfirmBtnClicked] = useState(false);
-
+  const dispatch = useDispatch();
   const fetchData = async () => {
     try {
       const response = await customizedAxios.get("/products");
@@ -26,6 +29,7 @@ export default function Home() {
   };
   const closeModal = () => {
     setIsConfirmBtnClicked(false);
+    dispatch(clearCartItems())
   };
   return (
     <>
