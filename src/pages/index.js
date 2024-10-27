@@ -13,7 +13,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const fetchData = async () => {
     try {
-      const response = await customizedAxios.get("https://vercel-json-server-xi.vercel.app/products");
+      const response = await customizedAxios.get("/products");
       console.log(response.data);
       setData(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
-// 
+
   const handleConfirmBtnFuncInParent = () => {
     setIsConfirmBtnClicked(true);
   };
