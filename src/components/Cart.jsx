@@ -3,6 +3,7 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
+import { Box, Button, Container, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -28,60 +29,134 @@ const Cart = ({ handleConfirmBtnFunc }) => {
 
   return (
     <>
-      <div className="cart">
-        <h2 style={{ color: "var(--Red)" }}>Your Cart({cartQuantity})</h2>
-        <div className="cart-body">
+      <Box className="cart">
+        <Typography variant="h5" sx={{ color: "var(--Red)" }}>
+          Your Cart({cartQuantity})
+        </Typography>
+        <Box
+          className="cartBody"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            maxWidth: "300px",
+            margin: "1.5rem 0",
+          }}
+        >
           {cartQuantity === 0 ? (
-            <div className="empty-file ">
-              <Image src="/images/illustration-empty-cart.svg" alt="Empty Cart" width={200} height={200}/>
-              <p>Your added items will appear here</p>
-            </div>
+            <Box className="empty-file ">
+              <Image
+                src="/images/illustration-empty-cart.svg"
+                alt="Empty Cart"
+                width={200}
+                height={200}
+              />
+              <Typography variant="body1">
+                Your added items will appear here
+              </Typography>
+            </Box>
           ) : (
             cartItems.map((item) => {
               return (
-                <div className="cart-item" key={item.id}>
-                  <h3>{item.name}</h3>
-                  <div className="cart-item-price">
-                    <p>${item.price}</p>
-                    <div className="cart-item-quantity">
-                      <button onClick={() => handleDecrement(item.id)}>
+                <Box className="cart-item" key={item.id}>
+                  <Typography variant="subtitle1">{item.name}</Typography>
+                  <Grid2
+                    container
+                    className="cart-item-price"
+                    columns={4}
+                    spacing={1}
+                    sx={{ alignItems: "center" }}
+                  >
+                    <Grid2 item className="price" size={{ xs: 2, md: 1 }}>
+                      ${item.price}
+                    </Grid2>
+                    <Grid2
+                      item
+                      className="cart-item-quantity"
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <button
+                        style={{
+                          border: "none",
+                          backgroundColor: "var(--Red)",
+                          color: "white",
+                          padding: "0.5rem",
+                          fontSize: "1rem",
+                          borderRadius: "5px",
+                          margin: "5px",
+                        }}
+                        onClick={() => handleDecrement(item.id)}
+                      >
                         −
                       </button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => handleIncrement(item.id)}>
+                      <Typography variant="subtitle1">
+                        {item.quantity}
+                      </Typography>
+                      <button
+                        style={{
+                          border: "none",
+                          backgroundColor: "var(--Red)",
+                          color: "white",
+                          padding: "0.5rem",
+                          fontSize: "1rem",
+                          borderRadius: "5px",
+                          margin: "5px",
+                        }}
+                        onClick={() => handleIncrement(item.id)}
+                      >
                         +
                       </button>
-                    </div>
-                    <div style={{ textAlign: "right" }}>
+                    </Grid2>
+                    <Grid2 item sx={{ textAlign: "right" }}>
                       <button
                         className="btn-delete"
+                        style={{
+                          width: "1rem",
+                          height: "1rem",
+                          background: "none",
+                          borderRadius: "50%",
+                          border: "1px solid gray",
+                        }}
                         onClick={() => handleRemove(item.id)}
                       >
                         <span>&times;</span>
                       </button>
-                    </div>
-                  </div>
-                </div>
+                    </Grid2>
+                  </Grid2>
+                </Box>
               );
             })
           )}
           {cartQuantity > 0 && (
             <>
-              <div style={{ display: "flex" }}>
-                <label style={{ flex: 1 }}>Order Total:</label>
-                <h3> ${cartTotal.toLocaleString()}</h3>
-              </div>
+              <Box sx={{ display: "flex" }}>
+                <Typography sx={{ flex: 1 }}>Order Total:</Typography>
+                <Typography> ${cartTotal.toLocaleString()}</Typography>
+              </Box>
               <button
                 className="confirmOrder"
-                style={{ textAlign: "center" }}
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "var(--Red)",
+                  border: "none",
+                  color: "white",
+                  padding: "1rem 3rem",
+                  borderRadius: "1.5rem",
+                  margin: "1rem 0",
+                  textWrap:'nowrap'
+                }}
                 onClick={handleConfirmBtnFunc}
               >
                 Confirm Order
               </button>
             </>
           )}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 };
