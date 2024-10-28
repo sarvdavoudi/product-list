@@ -26,7 +26,7 @@ export default function Home() {
   const handleConfirmBtnFuncInParent = () => {
     setIsConfirmBtnClicked(true);
   };
-  const closeModal = () => {
+  const closeDialog = () => {
     setIsConfirmBtnClicked(false);
     dispatch(clearCartItems());
   };
@@ -51,6 +51,7 @@ export default function Home() {
             container
             spacing={1}
             columns={{ sx: 12, md: 4 }}
+            sx={{mt:'20px'}}
             className="product-container"
           >
             {data.map((item) => (
@@ -73,7 +74,7 @@ export default function Home() {
         />
       </Container>
 
-      <Modal closeModal={closeModal} open={isConfirmBtnClicked} />
+      <Modal closeDialog={closeDialog} openDialog={isConfirmBtnClicked} />
     </>
   );
 }

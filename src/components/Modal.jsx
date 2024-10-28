@@ -1,15 +1,15 @@
-import Image from "next/image";
-import { useSelector } from "react-redux";
+import { Grid2 } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import { Grid2 } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Image from "next/image";
+import { useSelector } from "react-redux";
 
-export const Modal = ({ closeModal, open }) => {
+export const Modal = ({ closeDialog, openDialog }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const cartTotal = cartItems
     .map((item) => item.price * item.quantity)
@@ -39,8 +39,7 @@ export const Modal = ({ closeModal, open }) => {
   );
   return (
     <Dialog
-      open={open}
-      onClose={closeModal}
+      open={openDialog}
       sx={{
         "& .MuiDialog-paper": {
           borderRadius: 2,
@@ -73,7 +72,7 @@ export const Modal = ({ closeModal, open }) => {
         </Box>
 
         <Button
-          onClick={closeModal}
+          onClick={closeDialog}
           sx={{
             mt: 2,
             backgroundColor: "var(--Red)",

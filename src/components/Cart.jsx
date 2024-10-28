@@ -3,7 +3,7 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
-import { Box, Button, Container, Grid2, Typography } from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -30,7 +30,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
   return (
     <>
       <Box className="cart">
-        <Typography variant="h5" sx={{ color: "var(--Red)" }}>
+        <Typography variant="h4" sx={{ color: "var(--Red)", mb: "10px" }}>
           Your Cart({cartQuantity})
         </Typography>
         <Box
@@ -147,7 +147,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                   padding: "1rem 3rem",
                   borderRadius: "1.5rem",
                   margin: "1rem 0",
-                  textWrap:'nowrap'
+                  textWrap: "nowrap",
                 }}
                 onClick={handleConfirmBtnFunc}
               >
