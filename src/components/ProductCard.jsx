@@ -53,7 +53,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               : "none",
           }}
         />
-        <section className="detail" sx={{ mt: "1rem" }}>
+        <section className="detail" style={{ marginTop: "2rem"}}>
           <Box sx={{ color: "gray" }}>{category}</Box>
           <Box sx={{ fontWeight: "700" }}>{name}</Box>
           <Box sx={{ color: theme.palette.primary.main, fontWeight: "700" }}>
@@ -66,7 +66,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             sx={{
               position: "absolute",
               width: "150px",
-              top: "70%",
+              top: "65%",
               left: "20%",
               borderRadius: "15px",
               display: "flex",
@@ -121,7 +121,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             sx={{
               position: "absolute",
               width: "150px",
-              top: "70%",
+              top: "65%",
               left: "20%",
               borderRadius: "15px",
               display: "flex",
