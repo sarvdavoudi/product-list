@@ -44,7 +44,7 @@ export default function Home() {
           minHeight: "100vh",
         }}
       >
-        {!loading ? (
+        {loading ? (
           <CustomSkeleton />
         ) : (
           <Box
