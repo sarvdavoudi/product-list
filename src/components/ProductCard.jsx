@@ -53,7 +53,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               : "none",
           }}
         />
-        <section className="detail" style={{ marginTop: "2rem"}}>
+        <section className="detail" style={{ marginTop: "2rem" }}>
           <Box sx={{ color: "gray" }}>{category}</Box>
           <Box sx={{ fontWeight: "700" }}>{name}</Box>
           <Box sx={{ color: theme.palette.primary.main, fontWeight: "700" }}>
@@ -94,7 +94,10 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
                 style={{ padding: "2px" }}
               />
             </button>
-            <Typography variant="caption" sx={{ margin: "0 15px" }}>
+            <Typography
+              variant="caption"
+              sx={{ margin: "0 15px", fontWeight: 600 }}
+            >
               {cardQuantity}
             </Typography>
             <button
@@ -129,7 +132,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               alignItems: "center",
               backgroundColor: theme.palette.secondary.main,
               color: "black",
-              border: "1px solid black",
+              border: `2px solid ${theme.palette.third.main}`,
               cursor: "pointer",
             }}
           >
@@ -139,7 +142,14 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               src="/images/icon-add-to-cart.svg"
               alt="AddtoCart"
             />
-            <Typography variant="caption" sx={{ margin: "0 5px" }}>
+            <Typography
+              variant="caption"
+              sx={{
+                margin: "0 5px",
+                color: theme.palette.third.dark,
+                fontWeight: 600,
+              }}
+            >
               Add to cart
             </Typography>
           </Button>

@@ -67,7 +67,7 @@ export default function Home() {
           >
             <>
               <section className="desserts">
-                <Typography variant="h4" sx={{ mb: "10px" }}>
+                <Typography variant="h4" sx={{ mb: "10px",fontWeight:'800' }}>
                   Desserts
                 </Typography>
                 <Box

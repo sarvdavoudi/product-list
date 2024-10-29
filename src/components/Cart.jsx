@@ -33,7 +33,11 @@ const Cart = ({ handleConfirmBtnFunc }) => {
       <Box className="cart">
         <Typography
           variant="h5"
-          sx={{ color: theme.palette.primary.main, mb: "10px" }}
+          sx={{
+            color: theme.palette.primary.main,
+            mb: "10px",
+            fontWeight: "800",
+          }}
         >
           Your Cart({cartQuantity})
         </Typography>
@@ -75,6 +79,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                       display: "grid",
                       gridTemplateColumns: "repeat(3,1fr)",
                       alignItems: "center",
+                      color: theme.palette.third.main,
                     }}
                   >
                     <Grid2 item className="price">
@@ -129,7 +134,8 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                           height: "1rem",
                           background: "none",
                           borderRadius: "50%",
-                          border: "1px solid gray",
+                          border: `1px solid ${theme.palette.third.main}`,
+                          color: theme.palette.third.main,
                         }}
                         onClick={() => handleRemove(item.id)}
                       >
@@ -145,7 +151,9 @@ const Cart = ({ handleConfirmBtnFunc }) => {
             <>
               <Divider />
               <Box sx={{ display: "flex" }}>
-                <Typography sx={{ flex: 1 }}>Order Total:</Typography>
+                <Typography sx={{ flex: 1, color: theme.palette.third.main }}>
+                  Order Total:
+                </Typography>
                 <Typography> ${cartTotal.toLocaleString()}</Typography>
               </Box>
               <button
