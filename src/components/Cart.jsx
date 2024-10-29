@@ -139,9 +139,9 @@ const Cart = ({ handleConfirmBtnFunc }) => {
               );
             })
           )}
-          <Divider />
           {cartQuantity > 0 && (
             <>
+            <Divider />
               <Box sx={{ display: "flex" }}>
                 <Typography sx={{ flex: 1 }}>Order Total:</Typography>
                 <Typography> ${cartTotal.toLocaleString()}</Typography>
