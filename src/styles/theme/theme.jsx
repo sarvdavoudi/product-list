@@ -10,6 +10,7 @@ const theme = createTheme({
     },
     secondary: {
       main: "hsl(20, 50%, 98%)",
+      dark:"hsl(13, 31%, 94%)",
       contrastText: "#000",
     },
   },

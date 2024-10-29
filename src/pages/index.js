@@ -4,7 +4,7 @@ import { Modal } from "@/components/Modal";
 import ProductCard from "@/components/ProductCard";
 import { clearCartItems } from "@/redux/slices/cartSlice";
 import { customizedAxios } from "@/services/axios";
-import { Box, Container, Grid2, Skeleton, Typography } from "@mui/material";
+import { Box, Container, Skeleton, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
   const [isConfirmBtnClicked, setIsConfirmBtnClicked] = useState(false);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const theme = useTheme();
   const fetchData = async () => {
     try {
       const response = await customizedAxios.get("/products");
@@ -36,53 +37,70 @@ export default function Home() {
   };
   return (
     <>
-      {loading ? (
-        <CustomSkeleton />
-      ) : (
-        <Container
-          className="container"
-          sx={{
-            minHeight: "100vh",
-            width: "90%",
-            margin: "4rem auto",
-            maxWidth: "75rem",
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-          }}
-        >
-          <>
-            <Box className="desserts">
-              <Typography variant="h4" sx={{ mb: "10px" }}>
-                Desserts
-              </Typography>
-              <Grid2
-                container
-                spacing={1}
-                columns={{ sx: 12, md: 4 }}
-                sx={{ mt: "20px" }}
-                className="product-container"
-              >
-                {data.map((item) => (
-                  <Grid2 item key={item.id}>
-                    <ProductCard
-                      id={item.id}
-                      image={item.image.desktop}
-                      name={item.name}
-                      category={item.category}
-                      price={item.price}
-                      quantity={item.quantity}
-                    />
-                  </Grid2>
-                ))}
-              </Grid2>
-            </Box>
-            <Card
-              className="cart"
-              handleConfirmBtnFunc={handleConfirmBtnFuncInParent}
-            />
-          </>
-        </Container>
-      )}
+      <Box
+        className="main-wrapper"
+        sx={{
+          backgroundColor: theme.palette.secondary.dark,
+          minHeight: "100vh",
+        }}
+      >
+        {loading ? (
+          <CustomSkeleton />
+        ) : (
+          <Box
+            className="container"
+            sx={{
+              width: "90%",
+              margin: "0 auto",
+              maxWidth: "80rem",
+              padding: "15px",
+              paddingY: "4rem",
+              display: "flex",
+              flexDirection: { xs: "column", lg: "row" },
+              justifyContent: "space-around",
+              gap: "10px",
+            }}
+          >
+            <>
+              <Box className="desserts">
+                <Typography variant="h4" sx={{ mb: "10px" }}>
+                  Desserts
+                </Typography>
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: {
+                      xs: "repeat(1, 1fr)",
+                      sm: "repeat(2, 1fr)",
+                      md: "repeat(3, 1fr)",
+                    },
+                    gap: "15px",
+                    mt: "20px",
+                  }}
+                  className="product-container"
+                >
+                  {data.map((item) => (
+                    <Box item key={item.id}>
+                      <ProductCard
+                        id={item.id}
+                        image={item.image.desktop}
+                        name={item.name}
+                        category={item.category}
+                        price={item.price}
+                        quantity={item.quantity}
+                      />
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+              <Card
+                className="cart"
+                handleConfirmBtnFunc={handleConfirmBtnFuncInParent}
+              />
+            </>
+          </Box>
+        )}
+      </Box>
 
       <Modal closeDialog={closeDialog} openDialog={isConfirmBtnClicked} />
     </>

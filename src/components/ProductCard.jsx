@@ -34,10 +34,15 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
     <>
       <Box
         className="productCard"
-        sx={{ position: "relative", height: "auto", width: "280px" }}
+        sx={{
+          position: "relative",
+          height: "auto",
+          width: "250px",
+        }}
       >
         <Image
           src={image}
+          layout="responsive"
           width={250}
           height={250}
           alt="desc"

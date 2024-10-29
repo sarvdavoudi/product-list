@@ -3,7 +3,7 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
-import { Box, Grid2, Typography, useTheme } from "@mui/material";
+import { Box, Divider, Grid2, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -30,7 +30,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
 
   return (
     <>
-      <Box className="cart">
+      <Box className="cart" sx={{}}>
         <Typography
           variant="h5"
           sx={{ color: theme.palette.primary.main, mb: "10px" }}
@@ -40,6 +40,10 @@ const Cart = ({ handleConfirmBtnFunc }) => {
         <Box
           className="cartBody"
           sx={{
+            backgroundColor: theme.palette.secondary.main,
+            height: "350px",
+            padding: "20px 40px",
+            height: "auto",
             display: "flex",
             flexDirection: "column",
             gap: "1rem",
@@ -135,6 +139,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
               );
             })
           )}
+          <Divider />
           {cartQuantity > 0 && (
             <>
               <Box sx={{ display: "flex" }}>
