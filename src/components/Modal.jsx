@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Grid2, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 export const Modal = ({ closeDialog, openDialog }) => {
+  const theme=useTheme()
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const cartTotal = cartItems
     .map((item) => item.price * item.quantity)
@@ -28,7 +29,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
       </Grid2>
       <Grid2 item size={{ xs: 1.2, sm: 2, md: 2.2 }}>
         <Typography fontSize={{ xs: "12px", sm: "15px" }}>{name}</Typography>
-        <Typography sx={{ color: "var(--Red)", fontWeight: "bold" }}>
+        <Typography sx={{ color: theme.palette.primary.main, fontWeight: "bold" }}>
           ×{quantity}
         </Typography>
       </Grid2>
@@ -64,7 +65,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
           />
         ))}
         <Divider />
-        <Box display="flex" justifyContent="space-between" mt={2}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", mt: "25px" }}>
           <Typography sx={{ fontWeight: "bold" }}>Order Total:</Typography>
           <Typography sx={{ fontWeight: "bold" }}>
             ${cartTotal.toLocaleString()}
@@ -75,8 +76,8 @@ export const Modal = ({ closeDialog, openDialog }) => {
           onClick={closeDialog}
           sx={{
             mt: 2,
-            backgroundColor: "var(--Red)",
-            color: "white",
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.secondary.main,
             padding: "0.75rem",
             borderRadius: "1rem",
             display: "block",

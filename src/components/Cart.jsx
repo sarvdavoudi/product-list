@@ -3,13 +3,14 @@ import {
   incrementItem,
   removeItem,
 } from "@/redux/slices/cartSlice";
-import { Box, Grid2, Typography } from "@mui/material";
+import { Box, Grid2, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
 const Cart = ({ handleConfirmBtnFunc }) => {
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const dispatch = useDispatch();
+  const theme = useTheme();
   const cartQuantity = cartItems.length;
   const cartTotal = cartItems
     .map((item) => item.price * item.quantity)
@@ -30,7 +31,10 @@ const Cart = ({ handleConfirmBtnFunc }) => {
   return (
     <>
       <Box className="cart">
-        <Typography variant="h4" sx={{ color: "var(--Red)", mb: "10px" }}>
+        <Typography
+          variant="h5"
+          sx={{ color: theme.palette.primary.main, mb: "10px" }}
+        >
           Your Cart({cartQuantity})
         </Typography>
         <Box
@@ -82,8 +86,8 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                       <button
                         style={{
                           border: "none",
-                          backgroundColor: "var(--Red)",
-                          color: "white",
+                          backgroundColor: theme.palette.primary.main,
+                          color: theme.palette.secondary.main,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -99,8 +103,8 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                       <button
                         style={{
                           border: "none",
-                          backgroundColor: "var(--Red)",
-                          color: "white",
+                          backgroundColor: theme.palette.primary.main,
+                          color: theme.palette.secondary.main,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -141,9 +145,9 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                 className="confirmOrder"
                 style={{
                   textAlign: "center",
-                  backgroundColor: "var(--Red)",
+                  backgroundColor: theme.palette.primary.main,
                   border: "none",
-                  color: "white",
+                  color: theme.palette.secondary.main,
                   padding: "1rem 3rem",
                   borderRadius: "1.5rem",
                   margin: "1rem 0",

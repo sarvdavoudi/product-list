@@ -3,7 +3,14 @@ import {
   decrementItem,
   incrementItem,
 } from "@/redux/slices/cartSlice";
-import { Box, But, Button, Buttonton, Typography } from "@mui/material";
+import {
+  Box,
+  But,
+  Button,
+  Buttonton,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +22,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
     ? cardAddedToRedux.quantity
     : "add to cart";
   const dispatch = useDispatch();
+  const theme = useTheme();
   // Use useEffect to set isAdded based on cardAddedToRedux
   useEffect(() => {
     setIsAdded(!!cardAddedToRedux); // that converts the value of cardAddedToRedux into a boolean:   //If cardAddedToRedux is truthy (i.e., it exists), !!cardAddedToRedux evaluates to true.
@@ -42,13 +50,17 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
           alt="desc"
           style={{
             borderRadius: "10px",
-            border: isAdded ? `3px solid var(--Red)` : "none",
+            border: isAdded
+              ? `3px solid ${theme.palette.primary.main}`
+              : "none",
           }}
         />
         <Box className="detail" sx={{ mt: "1rem" }}>
           <Box sx={{ color: "gray" }}>{category}</Box>
           <Box sx={{ fontWeight: "700" }}>{name}</Box>
-          <Box sx={{ color: "var(--Red)", fontWeight: "700" }}>${price}</Box>
+          <Box sx={{ color: theme.palette.primary.main, fontWeight: "700" }}>
+            ${price}
+          </Box>
         </Box>
         {isAdded ? (
           <Button
@@ -62,8 +74,8 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "var(--Red)",
-              color: "white",
+              backgroundColor: theme.palette.primary.main,
+              color: theme.palette.secondary.main,
               cursor: "pointer",
             }}
           >
@@ -71,7 +83,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               className="minusButton"
               onClick={handleDecrement}
               style={{
-                border: "1px solid white",
+                border: `1px solid ${theme.palette.secondary.main}`,
                 borderRadius: "50%",
                 background: "none",
               }}
@@ -84,14 +96,14 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
                 style={{ padding: "2px" }}
               />
             </button>
-            <Typography variant="subtitle1" sx={{ margin: "0 15px" }}>
+            <Typography variant="caption" sx={{ margin: "0 15px" }}>
               {cardQuantity}
             </Typography>
             <button
               className="plusButton"
               onClick={handleIncrement}
               style={{
-                border: "1px solid white",
+                border: `1px solid ${theme.palette.secondary.main}`,
                 borderRadius: "50%",
                 background: "none",
               }}
@@ -117,7 +129,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: "white",
+              backgroundColor: theme.palette.secondary.main,
               color: "black",
               border: "1px solid black",
               cursor: "pointer",
@@ -129,7 +141,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               src="/images/icon-add-to-cart.svg"
               alt="AddtoCart"
             />
-            <Typography variant="h8" sx={{ margin: "0 5px" }}>
+            <Typography variant="caption" sx={{ margin: "0 5px" }}>
               Add to cart
             </Typography>
           </Button>
