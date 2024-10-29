@@ -3,14 +3,7 @@ import {
   decrementItem,
   incrementItem,
 } from "@/redux/slices/cartSlice";
-import {
-  Box,
-  But,
-  Button,
-  Buttonton,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
