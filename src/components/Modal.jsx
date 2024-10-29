@@ -10,7 +10,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 export const Modal = ({ closeDialog, openDialog }) => {
-  const theme=useTheme()
+  const theme = useTheme();
   const cartItems = useSelector((state) => state.cartSlice.cartItems);
   const cartTotal = cartItems
     .map((item) => item.price * item.quantity)
@@ -29,7 +29,9 @@ export const Modal = ({ closeDialog, openDialog }) => {
       </Grid2>
       <Grid2 item size={{ xs: 1.2, sm: 2, md: 2.2 }}>
         <Typography fontSize={{ xs: "12px", sm: "15px" }}>{name}</Typography>
-        <Typography sx={{ color: theme.palette.primary.main, fontWeight: "bold" }}>
+        <Typography
+          sx={{ color: theme.palette.primary.main, fontWeight: "bold" }}
+        >
           ×{quantity}
         </Typography>
       </Grid2>
@@ -58,6 +60,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
       <DialogContent sx={{ mt: "20px" }}>
         {cartItems.map((item) => (
           <ModalItem
+            key={item.id}
             image={item.image}
             name={item.name}
             quantity={item.quantity}
@@ -65,7 +68,9 @@ export const Modal = ({ closeDialog, openDialog }) => {
           />
         ))}
         <Divider />
-        <Box sx={{ display: "flex", justifyContent: "space-between", mt: "25px" }}>
+        <Box
+          sx={{ display: "flex", justifyContent: "space-between", mt: "25px" }}
+        >
           <Typography sx={{ fontWeight: "bold" }}>Order Total:</Typography>
           <Typography sx={{ fontWeight: "bold" }}>
             ${cartTotal.toLocaleString()}
