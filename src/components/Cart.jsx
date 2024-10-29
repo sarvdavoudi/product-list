@@ -71,11 +71,13 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                   <Grid2
                     container
                     className="cart-item-price"
-                    columns={4}
-                    spacing={1}
-                    sx={{ alignItems: "center" }}
+                    sx={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(3,1fr)",
+                      alignItems: "center",
+                    }}
                   >
-                    <Grid2 item className="price" size={{ xs: 2, md: 1 }}>
+                    <Grid2 item className="price">
                       ${item.price}
                     </Grid2>
                     <Grid2
