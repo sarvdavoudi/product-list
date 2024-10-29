@@ -43,7 +43,7 @@ export default function Home() {
       </Head>
       <main
         className="main-wrapper"
-        sx={{
+        style={{
           backgroundColor: theme.palette.secondary.dark,
           minHeight: "100vh",
         }}
