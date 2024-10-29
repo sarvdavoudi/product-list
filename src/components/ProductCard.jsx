@@ -66,7 +66,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             sx={{
               position: "absolute",
               width: "150px",
-              top: "68%",
+              top: "70%",
               left: "20%",
               borderRadius: "15px",
               display: "flex",
@@ -121,7 +121,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
             sx={{
               position: "absolute",
               width: "150px",
-              top: "68%",
+              top: "70%",
               left: "20%",
               borderRadius: "15px",
               display: "flex",
