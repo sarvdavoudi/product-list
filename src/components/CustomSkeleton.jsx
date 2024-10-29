@@ -1,4 +1,4 @@
-import { Box, Container, Grid2, Skeleton } from "@mui/material";
+import { Box, Container, Skeleton } from "@mui/material";
 
 const CustomSkeleton = () => {
   return (
@@ -6,12 +6,13 @@ const CustomSkeleton = () => {
       <Container
         className="container"
         sx={{
-          minHeight: "100vh",
           width: "90%",
-          margin: "4rem auto",
+          margin: "0 auto",
           maxWidth: "75rem",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
+          paddingY: "4rem",
+          gap: "10px",
         }}
       >
         <Box className="productCards">
@@ -22,9 +23,20 @@ const CustomSkeleton = () => {
             height={20}
             sx={{ mb: "10px" }}
           />
-          <Grid2 container spacing={2} columns={4}>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "repeat(1, 1fr)",
+                sm: "repeat(2, 1fr)",
+                md: "repeat(3, 1fr)",
+              },
+              gap: "15px",
+              mt: "20px",
+            }}
+          >
             {Array.from({ length: 9 }).map((_, index) => (
-              <Grid2 item key={index}>
+              <Box item key={index}>
                 <Skeleton
                   animation="wave"
                   variant="rounded"
@@ -45,9 +57,9 @@ const CustomSkeleton = () => {
                   height={20}
                   sx={{ mt: "10px" }}
                 />
-              </Grid2>
+              </Box>
             ))}
-          </Grid2>
+          </Box>
         </Box>
 
         <Box className="cart">

@@ -30,7 +30,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
 
   return (
     <>
-      <Box className="cart" sx={{}}>
+      <Box className="cart">
         <Typography
           variant="h5"
           sx={{ color: theme.palette.primary.main, mb: "10px" }}
@@ -141,7 +141,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
           )}
           {cartQuantity > 0 && (
             <>
-            <Divider />
+              <Divider />
               <Box sx={{ display: "flex" }}>
                 <Typography sx={{ flex: 1 }}>Order Total:</Typography>
                 <Typography> ${cartTotal.toLocaleString()}</Typography>
