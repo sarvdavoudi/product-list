@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { clearCartItems } from "@/redux/slices/cartSlice";
 import { customizedAxios } from "@/services/axios";
 import { Box, Container, Skeleton, Typography, useTheme } from "@mui/material";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 export default function Home() {
@@ -37,7 +38,10 @@ export default function Home() {
   };
   return (
     <>
-      <Box
+      <Head>
+        <title>Product-list</title>
+      </Head>
+      <main
         className="main-wrapper"
         sx={{
           backgroundColor: theme.palette.secondary.dark,
@@ -62,11 +66,12 @@ export default function Home() {
             }}
           >
             <>
-              <Box className="desserts">
+              <section className="desserts">
                 <Typography variant="h4" sx={{ mb: "10px" }}>
                   Desserts
                 </Typography>
                 <Box
+                  className="product-container"
                   sx={{
                     display: "grid",
                     gridTemplateColumns: {
@@ -77,7 +82,6 @@ export default function Home() {
                     gap: "15px",
                     mt: "20px",
                   }}
-                  className="product-container"
                 >
                   {data.map((item) => (
                     <Box item key={item.id}>
@@ -92,15 +96,14 @@ export default function Home() {
                     </Box>
                   ))}
                 </Box>
-              </Box>
-              <Card
-                className="cart"
-                handleConfirmBtnFunc={handleConfirmBtnFuncInParent}
-              />
+              </section>
+              <section className="cart">
+                <Card handleConfirmBtnFunc={handleConfirmBtnFuncInParent} />
+              </section>
             </>
           </Box>
         )}
-      </Box>
+      </main>
 
       <Modal closeDialog={closeDialog} openDialog={isConfirmBtnClicked} />
     </>

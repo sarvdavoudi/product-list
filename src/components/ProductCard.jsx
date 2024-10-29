@@ -53,13 +53,13 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               : "none",
           }}
         />
-        <Box className="detail" sx={{ mt: "1rem" }}>
+        <section className="detail" sx={{ mt: "1rem" }}>
           <Box sx={{ color: "gray" }}>{category}</Box>
           <Box sx={{ fontWeight: "700" }}>{name}</Box>
           <Box sx={{ color: theme.palette.primary.main, fontWeight: "700" }}>
             ${price}
           </Box>
-        </Box>
+        </section>
         {isAdded ? (
           <Button
             className="addedToCard"
