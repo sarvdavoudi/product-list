@@ -44,7 +44,7 @@ export default function Home() {
       <main
         className="main-wrapper"
         style={{
-          backgroundColor: theme.palette.secondary.dark,
+          backgroundColor: theme.palette.info.dark,
           minHeight: "100vh",
         }}
       >

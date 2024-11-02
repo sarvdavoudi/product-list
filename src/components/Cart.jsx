@@ -42,7 +42,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
         <Box
           className="cartBody"
           sx={{
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.info.main,
             height: "350px",
             padding: "20px 40px",
             height: "auto",
@@ -77,7 +77,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                       display: "grid",
                       gridTemplateColumns: "repeat(3,1fr)",
                       alignItems: "center",
-                      color: theme.palette.third.main,
+                      color: theme.palette.secondary.main,
                       justifyContent:'space-between',
                     }}
                   >
@@ -97,7 +97,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                         style={{
                           border: "none",
                           backgroundColor: theme.palette.primary.main,
-                          color: theme.palette.secondary.main,
+                          color: theme.palette.info.main,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -114,7 +114,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                         style={{
                           border: "none",
                           backgroundColor: theme.palette.primary.main,
-                          color: theme.palette.secondary.main,
+                          color: theme.palette.info.main,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -133,8 +133,8 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                           height: "1rem",
                           background: "none",
                           borderRadius: "50%",
-                          border: `1px solid ${theme.palette.third.main}`,
-                          color: theme.palette.third.main,
+                          border: `1px solid ${theme.palette.secondary.main}`,
+                          color: theme.palette.secondary.main,
                         }}
                         onClick={() => handleRemove(item.id)}
                       >
@@ -150,7 +150,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
             <>
               <Divider />
               <Box sx={{ display: "flex" }}>
-                <Typography sx={{ flex: 1, color: theme.palette.third.main }}>
+                <Typography sx={{ flex: 1, color: theme.palette.secondary.main }}>
                   Order Total:
                 </Typography>
                 <Typography> ${cartTotal.toLocaleString()}</Typography>
@@ -161,7 +161,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                   textAlign: "center",
                   backgroundColor: theme.palette.primary.main,
                   border: "none",
-                  color: theme.palette.secondary.main,
+                  color: theme.palette.info.main,
                   padding: "1rem 3rem",
                   borderRadius: "1.5rem",
                   margin: "1rem 0",

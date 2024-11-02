@@ -76,7 +76,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: theme.palette.primary.main,
-              color: theme.palette.secondary.main,
+              color: theme.palette.info.main,
               cursor: "pointer",
               padding: "10px",
             }}
@@ -85,7 +85,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               className="minusButton"
               onClick={handleDecrement}
               style={{
-                border: `1px solid ${theme.palette.secondary.main}`,
+                border: `1px solid ${theme.palette.info.main}`,
                 borderRadius: "50%",
                 background: "none",
                 cursor: "pointer",
@@ -106,7 +106,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               className="plusButton"
               onClick={handleIncrement}
               style={{
-                border: `1px solid ${theme.palette.secondary.main}`,
+                border: `1px solid ${theme.palette.info.main}`,
                 borderRadius: "50%",
                 background: "none",
                 cursor: "pointer",
@@ -133,9 +133,9 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              backgroundColor: theme.palette.secondary.main,
+              backgroundColor: theme.palette.info.main,
               color: "black",
-              border: `2px solid ${theme.palette.third.main}`,
+              border: `2px solid ${theme.palette.secondary.main}`,
               cursor: "pointer",
             }}
           >
@@ -149,7 +149,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               variant="subtitle2"
               sx={{
                 margin: "0 5px",
-                color: theme.palette.third.dark,
+                color: theme.palette.secondary.dark,
               }}
             >
               Add to cart
