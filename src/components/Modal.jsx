@@ -22,7 +22,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
       columnSpacing={2}
       rowSpacing={2}
       columns={3}
-      sx={{ alignItems: "center" }}
+      sx={{ alignItems: "center", justifyContent: "space-between" }}
     >
       <Grid2 item>
         <Image src={image} width={50} height={50} alt="desc" />
@@ -30,13 +30,14 @@ export const Modal = ({ closeDialog, openDialog }) => {
       <Grid2 item size={{ xs: 1.2, sm: 2, md: 2.2 }}>
         <Typography fontSize={{ xs: "12px", sm: "15px" }}>{name}</Typography>
         <Typography
-          sx={{ color: theme.palette.primary.main, fontWeight: "bold" }}
+          variant="subtitle1"
+          sx={{ color: theme.palette.primary.main }}
         >
           ×{quantity}
         </Typography>
       </Grid2>
       <Grid2>
-        <Typography sx={{ fontWeight: "bold" }}>${price}</Typography>
+        <Typography variant="subtitle1">${price}</Typography>
       </Grid2>
     </Grid2>
   );
@@ -52,9 +53,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
       }}
     >
       <DialogTitle>
-        <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-          Order Confirmed
-        </Typography>
+        <Typography variant="h4">Order Confirmed</Typography>
         <Typography>We hope you enjoy your food!</Typography>
       </DialogTitle>
       <DialogContent sx={{ mt: "20px" }}>
@@ -71,8 +70,8 @@ export const Modal = ({ closeDialog, openDialog }) => {
         <Box
           sx={{ display: "flex", justifyContent: "space-between", mt: "25px" }}
         >
-          <Typography sx={{ fontWeight: "bold" }}>Order Total:</Typography>
-          <Typography sx={{ fontWeight: "bold" }}>
+          <Typography variant="subtitle1">Order Total:</Typography>
+          <Typography variant="subtitle1">
             ${cartTotal.toLocaleString()}
           </Typography>
         </Box>
@@ -84,7 +83,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
             backgroundColor: theme.palette.primary.main,
             color: theme.palette.secondary.main,
             padding: "0.75rem",
-            borderRadius: "1rem",
+            borderRadius: "2rem",
             display: "block",
             width: "100%",
             "&:hover": { backgroundColor: "darkred" },

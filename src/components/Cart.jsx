@@ -32,11 +32,9 @@ const Cart = ({ handleConfirmBtnFunc }) => {
     <>
       <Box className="cart">
         <Typography
-          variant="h5"
+          variant="h2"
           sx={{
             color: theme.palette.primary.main,
-            mb: "10px",
-            fontWeight: "800",
           }}
         >
           Your Cart({cartQuantity})
@@ -80,6 +78,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                       gridTemplateColumns: "repeat(3,1fr)",
                       alignItems: "center",
                       color: theme.palette.third.main,
+                      justifyContent:'space-between',
                     }}
                   >
                     <Grid2 item className="price">

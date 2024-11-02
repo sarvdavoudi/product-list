@@ -54,11 +54,14 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
           }}
         />
         <section className="detail" style={{ marginTop: "2rem" }}>
-          <Box sx={{ color: "gray" }}>{category}</Box>
-          <Box sx={{ fontWeight: "700" }}>{name}</Box>
-          <Box sx={{ color: theme.palette.primary.main, fontWeight: "700" }}>
+          <Typography sx={{ color: "gray" }}>{category}</Typography>
+          <Typography variant="subtitle1">{name}</Typography>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: theme.palette.primary.main }}
+          >
             ${price}
-          </Box>
+          </Typography>
         </section>
         {isAdded ? (
           <Button
@@ -75,6 +78,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               backgroundColor: theme.palette.primary.main,
               color: theme.palette.secondary.main,
               cursor: "pointer",
+              padding: "10px",
             }}
           >
             <button
@@ -84,6 +88,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
                 border: `1px solid ${theme.palette.secondary.main}`,
                 borderRadius: "50%",
                 background: "none",
+                cursor: "pointer",
               }}
             >
               <Image
@@ -94,10 +99,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
                 style={{ padding: "2px" }}
               />
             </button>
-            <Typography
-              variant="caption"
-              sx={{ margin: "0 15px", fontWeight: 600 }}
-            >
+            <Typography variant="caption" sx={{ margin: "0 15px" }}>
               {cardQuantity}
             </Typography>
             <button
@@ -107,6 +109,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
                 border: `1px solid ${theme.palette.secondary.main}`,
                 borderRadius: "50%",
                 background: "none",
+                cursor: "pointer",
               }}
             >
               <Image
@@ -143,11 +146,10 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               alt="AddtoCart"
             />
             <Typography
-              variant="caption"
+              variant="subtitle2"
               sx={{
                 margin: "0 5px",
                 color: theme.palette.third.dark,
-                fontWeight: 600,
               }}
             >
               Add to cart
