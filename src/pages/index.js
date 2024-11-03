@@ -2,9 +2,10 @@ import Card from "@/components/Cart";
 import CustomSkeleton from "@/components/CustomSkeleton";
 import { Modal } from "@/components/Modal";
 import ProductCard from "@/components/ProductCard";
+import { SwitchTheme } from "@/components/SwitchTheme";
 import { clearCartItems } from "@/redux/slices/cartSlice";
 import { customizedAxios } from "@/services/axios";
-import { Box, Container, Skeleton, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -36,6 +37,7 @@ export default function Home() {
     setIsConfirmBtnClicked(false);
     dispatch(clearCartItems());
   };
+
   return (
     <>
       <Head>
@@ -66,6 +68,8 @@ export default function Home() {
             }}
           >
             <>
+            <SwitchTheme />
+
               <section className="desserts">
                 <Typography variant="h2" >
                   Desserts
