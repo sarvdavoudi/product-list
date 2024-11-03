@@ -1,5 +1,8 @@
+import { alpha } from "@mui/material";
+
 // theme/palette.js
-const palette = {
+const lightModePalette = {
+  mode: "light",
   primary: {
     light: " hsl(14, 94%, 54%)",
     main: "hsl(14, 86%, 42%)",
@@ -30,6 +33,64 @@ const palette = {
     light: "rgba(248, 167, 30, 0.20)",
     main: "#F8A71E ",
   },
+  gray: {
+    0: "#FFFFFF",
+    50: "#EEEEEE",
+    100: "#F4F4FA",
+    200: "#F6F8F9", //
+    300: "#E1E9EB",
+    400: "#9BB5BE", //
+    500: "#cecfcf",
+    600: "#5A6B87",
+    700: "#161C24",
+    // Dark mode 1000 >=
+    1000: "#313A43",
+    1100: "#1A242E",
+    1200: "#09151F",
+    500_8: alpha("#97AAC8", 0.08),
+    500_12: alpha("#97AAC8", 0.12),
+    500_16: alpha("#97AAC8", 0.16),
+    500_24: alpha("#97AAC8", 0.24),
+    500_32: alpha("#97AAC8", 0.32),
+    500_48: alpha("#97AAC8", 0.48),
+    500_56: alpha("#97AAC8", 0.56),
+    500_80: alpha("#97AAC8", 0.8),
+  },
 };
 
-export default palette;
+const darkModePalette={
+  mode:'dark',
+  primary: {
+    light: "hsl(14, 86%, 42%)",
+    main: "hsl(14, 80%, 38%)",
+    dark: "hsl(14, 70%, 30%)",
+    contrastText: "#ffffff",
+  },
+  secondary: {
+    light: "hsl(7, 20%, 60%)",
+    main: "hsl(7, 15%, 55%)",
+    dark: "hsl(7, 10%, 50%)",
+  },
+  info: {
+    main: "hsl(220, 15%, 20%)",
+    dark: "hsl(220, 20%, 15%)",
+    contrastText: "#ffffff",
+  },
+  background: {
+    default: "#121212",
+    paper: "#1e1e1e",
+  },
+  text: {
+    primary: "#ffffff",
+    secondary: "rgba(255, 255, 255, 0.7)",
+  },
+  gray: {
+    0: '#1E1E1E',
+    50: '#2A2A2A',
+    100: '#333333',
+    // Other shades for dark mode...
+  },
+  // Add other colors as needed for dark mode...
+
+}
+export { lightModePalette, darkModePalette };
