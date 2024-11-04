@@ -1,45 +1,30 @@
 // theme/index.js
-import breakpoints from "@/styles/theme/breakpoints";
+import breakpoints from "@/styles/theme/breakpoints"; // Import breakpoints
 import { darkModePalette, lightModePalette } from "@/styles/theme/palette";
-import typography from "@/styles/theme/typography";
+import typography from "@/styles/theme/typography"; // Import typography
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material/styles";
-import { createContext, useContext, useMemo, useState } from "react";
-
-export const ThemeContext = createContext();
+import { useSelector } from "react-redux";
 
 export const ThemeProvider = ({ children }) => {
-  const [themeMode, setThemeMode] = useState("light");
+  const themeMode = useSelector((state) => state.theme.mode); // Get the current theme mode from Redux
 
-  const isLight = themeMode === "light";
-
-  // Memoize the theme options based on the current theme mode
-  const themeOptions = useMemo(
-    () => ({
-      palette: isLight ? lightModePalette : darkModePalette,
-      typography,
-      breakpoints,
-    }),
-    [isLight]
-  );
-
-  // Create theme using the memoized options
-  const theme = useMemo(() => createTheme(themeOptions), [themeOptions]);
-
-  // Function to toggle theme
-  const toggleTheme = () => {
-    setThemeMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+  // Define the theme options based on the current theme mode
+  const themeOptions = {
+    palette: themeMode === "light" ? lightModePalette : darkModePalette,
+    typography, // Use the imported typography
+    breakpoints, // Use the imported breakpoints
   };
 
+  const theme = createTheme(themeOptions);
+
   return (
-    <ThemeContext.Provider value={{ isLight, toggleTheme }}>
-      <MUIThemeProvider theme={theme}>
-        <CssBaseline />
-        {children}
-      </MUIThemeProvider>
-    </ThemeContext.Provider>
+    <MUIThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </MUIThemeProvider>
   );
 };

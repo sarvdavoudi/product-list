@@ -1,18 +1,15 @@
 // components/ThemeSwitch.js
-import React, { useContext } from "react";
+import { toggleTheme } from "@/redux/slices/themeSlice";
 import Switch from "@mui/material/Switch";
-import { ThemeContext } from "@/styles/theme";
+import { useDispatch, useSelector } from "react-redux";
 
 export const SwitchTheme = () => {
-  const { toggleTheme , isLight} = useContext(ThemeContext);
-  console.log('Current Theme:', isLight ? 'Light' : 'Dark');
+  const themeMode = useSelector((state) => state.theme.mode);
+  const dispatch = useDispatch();
+  const isLight = themeMode === "light";
 
-  return (
-    <Switch
-      checked={!isLight} // Checked state is inverted for dark mode
-      onChange={toggleTheme} // Call toggleTheme on switch change
-      color="primary"
-      inputProps={{ "aria-label": "Toggle theme" }}
-    />
-  );
+  const handleToggle = () => {
+    dispatch(toggleTheme());
+  };
+  return <Switch checked={!isLight} onChange={handleToggle} color="primary" />;
 };
