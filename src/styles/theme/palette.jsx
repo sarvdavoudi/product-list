@@ -37,13 +37,33 @@ const lightModePalette = {
     0: "#FFFFFF",
     50: "#EEEEEE",
     100: "#F4F4FA",
-    200: "#F6F8F9", //
+    200: "#F6F8F9",
     300: "#E1E9EB",
-    400: "#9BB5BE", //
+    400: "#9BB5BE",
     500: "#cecfcf",
     600: "#5A6B87",
     700: "#161C24",
-    // Dark mode 1000 >=
+  },
+};
+
+const darkModePalette = {
+  mode: "dark",
+  primary: {
+    light: "hsl(14, 86%, 42%)",
+    main: "hsl(14, 80%, 38%)",
+    dark: "hsl(14, 70%, 30%)",
+  },
+  secondary: {
+    light: "#FFFFFF",
+    main: "#FFFFFF",
+    dark: "#FFFFFF",
+  },
+  info: {
+    main: "hsl(220, 15%, 20%)",
+    dark: "hsl(220, 20%, 15%)",
+    text: "#FFFFFF",
+  },
+  gray: {
     1000: "#313A43",
     1100: "#1A242E",
     1200: "#09151F",
@@ -57,25 +77,4 @@ const lightModePalette = {
     500_80: alpha("#97AAC8", 0.8),
   },
 };
-
-const darkModePalette={
-  mode:'dark',
-  primary: {
-    light: "hsl(14, 86%, 42%)",
-    main: "hsl(14, 80%, 38%)",
-    dark: "hsl(14, 70%, 30%)",
-    
-  },
-  secondary: {
-    light:"#FFFFFF",
-    main: "#FFFFFF",
-    dark: "#FFFFFF",
-  },
-  info: {
-    main: "hsl(220, 15%, 20%)",
-    dark: "hsl(220, 20%, 15%)",
-    text:"#FFFFFF",
-
-  },
-}
 export { lightModePalette, darkModePalette };
