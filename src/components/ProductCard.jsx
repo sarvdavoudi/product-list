@@ -76,7 +76,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: theme.palette.primary.main,
-              color: theme.palette.info.main,
+              color: theme.palette.info.text,
               cursor: "pointer",
               padding: "10px",
             }}
@@ -85,7 +85,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               className="minusButton"
               onClick={handleDecrement}
               style={{
-                border: `1px solid ${theme.palette.info.main}`,
+                border: `1px solid ${theme.palette.info.text}`,
                 borderRadius: "50%",
                 background: "none",
                 cursor: "pointer",
@@ -106,7 +106,7 @@ const ProductCard = ({ image, name, category, price, id, quantity }) => {
               className="plusButton"
               onClick={handleIncrement}
               style={{
-                border: `1px solid ${theme.palette.info.main}`,
+                border: `1px solid ${theme.palette.info.text}`,
                 borderRadius: "50%",
                 background: "none",
                 cursor: "pointer",

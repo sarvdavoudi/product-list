@@ -17,7 +17,7 @@ const lightModePalette = {
   info: {
     main: "hsl(20, 50%, 98%)",
     dark: "hsl(13, 31%, 94%)",
-    contrastText: "#000",
+    text: "#FFFFFF",
   },
   error: {
     lighter: "rgba(235, 87, 87, 0.20)",
@@ -64,33 +64,18 @@ const darkModePalette={
     light: "hsl(14, 86%, 42%)",
     main: "hsl(14, 80%, 38%)",
     dark: "hsl(14, 70%, 30%)",
-    contrastText: "#ffffff",
+    
   },
   secondary: {
-    light: "hsl(7, 20%, 60%)",
-    main: "hsl(7, 15%, 55%)",
-    dark: "hsl(7, 10%, 50%)",
+    light:"#FFFFFF",
+    main: "#FFFFFF",
+    dark: "#FFFFFF",
   },
   info: {
     main: "hsl(220, 15%, 20%)",
     dark: "hsl(220, 20%, 15%)",
-    contrastText: "#ffffff",
-  },
-  background: {
-    default: "#121212",
-    paper: "#1e1e1e",
-  },
-  text: {
-    primary: "#ffffff",
-    secondary: "rgba(255, 255, 255, 0.7)",
-  },
-  gray: {
-    0: '#1E1E1E',
-    50: '#2A2A2A',
-    100: '#333333',
-    // Other shades for dark mode...
-  },
-  // Add other colors as needed for dark mode...
+    text:"#FFFFFF",
 
+  },
 }
 export { lightModePalette, darkModePalette };

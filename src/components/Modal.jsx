@@ -81,7 +81,7 @@ export const Modal = ({ closeDialog, openDialog }) => {
           sx={{
             mt: 2,
             backgroundColor: theme.palette.primary.main,
-            color: theme.palette.info.main,
+            color: theme.palette.info.text,
             padding: "0.75rem",
             borderRadius: "2rem",
             display: "block",

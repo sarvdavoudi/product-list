@@ -97,7 +97,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                         style={{
                           border: "none",
                           backgroundColor: theme.palette.primary.main,
-                          color: theme.palette.info.main,
+                          color: theme.palette.info.text,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -114,7 +114,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                         style={{
                           border: "none",
                           backgroundColor: theme.palette.primary.main,
-                          color: theme.palette.info.main,
+                          color: theme.palette.info.text,
                           padding: "0.5rem",
                           fontSize: "1rem",
                           borderRadius: "5px",
@@ -161,7 +161,7 @@ const Cart = ({ handleConfirmBtnFunc }) => {
                   textAlign: "center",
                   backgroundColor: theme.palette.primary.main,
                   border: "none",
-                  color: theme.palette.info.main,
+                  color: theme.palette.info.text,
                   padding: "1rem 3rem",
                   borderRadius: "1.5rem",
                   margin: "1rem 0",
