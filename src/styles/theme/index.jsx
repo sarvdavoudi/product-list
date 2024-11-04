@@ -1,7 +1,6 @@
-// theme/index.js
-import breakpoints from "@/styles/theme/breakpoints"; // Import breakpoints
+import breakpoints from "@/styles/theme/breakpoints";
 import { darkModePalette, lightModePalette } from "@/styles/theme/palette";
-import typography from "@/styles/theme/typography"; // Import typography
+import typography from "@/styles/theme/typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import {
   createTheme,
@@ -9,18 +8,16 @@ import {
 } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 
+//ThemeProvider is responsible for applying the current theme state (stored in Redux) across the entire application.
+//SwitchTheme is solely responsible for toggling the theme mode by dispatching an action to Redux.
 export const ThemeProvider = ({ children }) => {
-  const themeMode = useSelector((state) => state.theme.mode); // Get the current theme mode from Redux
-
-  // Define the theme options based on the current theme mode
+  const themeMode = useSelector((state) => state.theme.mode);
   const themeOptions = {
     palette: themeMode === "light" ? lightModePalette : darkModePalette,
-    typography, // Use the imported typography
-    breakpoints, // Use the imported breakpoints
+    typography,
+    breakpoints,
   };
-
   const theme = createTheme(themeOptions);
-
   return (
     <MUIThemeProvider theme={theme}>
       <CssBaseline />
